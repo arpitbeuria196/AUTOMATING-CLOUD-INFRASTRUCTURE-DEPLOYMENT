@@ -1,0 +1,49 @@
+version: 0.2
+
+env:
+  variables:
+    ANSIBLE_HOST_KEY_CHECKING: "False"
+  parameter-store:
+    SSH_KEY: "C:\Users\arpit\OneDrive\Documents\GitHub\AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT\ansible.pem"  
+    AWS_ACCESS_KEY_ID: "AKIAYZZGSTA6DZ6ELFH7"
+    AWS_SECRET_ACCESS_KEY: "0XADnmEgnX6LvjfpyEn7l6XLNyjZPxIs25SXVqDV"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.13
+    commands:
+      # Install necessary dependencies (e.g., Ansible, AWS CLI)
+      - echo "Installing Ansible..."
+      - pip install ansible
+      - echo "Installing AWS CLI..."
+      - pip install awscli
+
+  pre_build:
+    commands:
+      - echo "Preparing SSH key..."
+      - mkdir -p ~/.ssh
+      - echo "$SSH_KEY" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - eval "$(ssh-agent -s)"
+      - ssh-add ~/.ssh/id_rsa
+      - echo "Configuring AWS CLI..."
+      - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+      - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+      - aws configure set default.region us-west-2  
+
+  build:
+    commands:
+      - echo "Running Ansible playbook to configure EC2 instance..."
+      - ansible-playbook -i hosts.ini nginx-setup.yml 
+      - echo "Playbook execution completed"
+
+  post_build:
+    commands:
+      - echo "Cleaning up..."
+      - rm -f ~/.ssh/id_rsa  # Remove the SSH key after use
+      - echo "Pipeline completed successfully!"
+
+artifacts:
+  files:
+    - "**/*"
