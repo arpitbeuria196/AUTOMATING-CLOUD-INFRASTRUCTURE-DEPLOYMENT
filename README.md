@@ -1,4 +1,8 @@
 ﻿# AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT
+
+#created Organisation and workspace in terraform cloud for terraform configuration
+![image](https://github.com/user-attachments/assets/ec0dc80a-5fed-446e-a218-121a81f59aa0)
+
 AwS instances created with the help of Ansible and Terraform
 ![image](https://github.com/user-attachments/assets/6e232b63-2b43-49a7-8e83-f639e1a56f5b)
 
