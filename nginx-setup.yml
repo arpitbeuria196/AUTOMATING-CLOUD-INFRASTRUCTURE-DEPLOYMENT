@@ -1,0 +1,21 @@
+---
+- name: Install and configure Nginx on EC2
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Copy index.html to Nginx
+      copy:
+        src: /mnt/c/Users/arpit/OneDrive/Documents/GitHub/AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT/index.html  
+        dest: /usr/share/nginx/html/index.html  
+        mode: '0644'
