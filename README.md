@@ -1,5 +1,9 @@
 ﻿# AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT
 
+ #PipeLine Successful
+ ![image](https://github.com/user-attachments/assets/ef2e20cf-3b0c-4867-85f5-9a025353ea19)
+
+
  #Build Status
  ![image](https://github.com/user-attachments/assets/a5df2bbe-f75b-49f5-b6f9-243e3171e703)
 
