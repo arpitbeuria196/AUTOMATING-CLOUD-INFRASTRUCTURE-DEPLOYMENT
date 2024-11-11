@@ -24,8 +24,6 @@ phases:
       - mkdir -p ~/.ssh
       - echo "$SSH_KEY" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
-      - eval "$(ssh-agent -s)"
-      - ssh-add ~/.ssh/id_rsa
       - echo "Configuring AWS CLI..."
       - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
       - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
@@ -34,13 +32,13 @@ phases:
   build:
     commands:
       - echo "Running Ansible playbook to configure EC2 instance..."
-      - ansible-playbook -i hosts.ini nginx-setup.yml 
+      - ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts.ini nginx-setup.yml 
       - echo "Playbook execution completed"
 
   post_build:
     commands:
       - echo "Cleaning up..."
-      - rm -f ~/.ssh/id_rsa  # Remove the SSH key after use
+      - rm -f ~/.ssh/id_rsa  
       - echo "Pipeline completed successfully!"
 
 artifacts:
