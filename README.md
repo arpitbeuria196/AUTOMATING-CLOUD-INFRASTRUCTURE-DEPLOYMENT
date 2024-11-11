@@ -1,5 +1,9 @@
 ﻿# AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT
 
+ #Build Status
+ ![image](https://github.com/user-attachments/assets/a5df2bbe-f75b-49f5-b6f9-243e3171e703)
+
+
 #Store the ssh key,Access key and Access Security key in parameter
 ![image](https://github.com/user-attachments/assets/f130630e-9184-4cf2-a910-4c02e0237b16)
 
