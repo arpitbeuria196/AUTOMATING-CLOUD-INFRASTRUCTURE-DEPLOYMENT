@@ -1,5 +1,9 @@
 ﻿# AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT
 
+ #TRunning Hello World On server
+ ![image](https://github.com/user-attachments/assets/47b2415f-cf99-40fc-b396-ef789b716537)
+
+
  #PipeLine Successful
  ![image](https://github.com/user-attachments/assets/ef2e20cf-3b0c-4867-85f5-9a025353ea19)
 
@@ -27,10 +31,7 @@
 AwS instances created with the help of Ansible and Terraform
 ![image](https://github.com/user-attachments/assets/6e232b63-2b43-49a7-8e83-f639e1a56f5b)
 
- 
-#Terraform
- ![image](https://github.com/user-attachments/assets/47b2415f-cf99-40fc-b396-ef789b716537)
+ #Docker
 
-#Docker 
 
 ![image](https://github.com/user-attachments/assets/087e5d72-cef5-42ad-9ba1-4733fc9775af)
