@@ -1,5 +1,9 @@
 ﻿# AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT
 
+#Store the ssh key in parameter
+![image](https://github.com/user-attachments/assets/f58d83ce-c300-432a-825d-8912bc5e86ac)
+
+
 #Created Build Project in AWS and configured with GitHub
  ![image](https://github.com/user-attachments/assets/a430398e-c092-412b-a4f9-17dad70d4c1a)
 
