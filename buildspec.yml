@@ -4,16 +4,15 @@ env:
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
   parameter-store:
-    SSH_KEY: "C:\Users\arpit\OneDrive\Documents\GitHub\AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT\ansible.pem"  
-    AWS_ACCESS_KEY_ID: "AKIAYZZGSTA6DZ6ELFH7"
-    AWS_SECRET_ACCESS_KEY: "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"
+    SSH_KEY: "/myproject/ansible-ssh-key"
+    AWS_ACCESS_KEY_ID: "/myproject/aws-access-key-id"  
+    AWS_SECRET_ACCESS_KEY: "/myproject/aws-secret-access-key"  
 
 phases:
   install:
     runtime-versions:
       python: 3.13
     commands:
-      # Install necessary dependencies (e.g., Ansible, AWS CLI)
       - echo "Installing Ansible..."
       - pip install ansible
       - echo "Installing AWS CLI..."
