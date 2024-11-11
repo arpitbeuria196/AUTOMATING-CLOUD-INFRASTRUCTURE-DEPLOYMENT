@@ -11,7 +11,7 @@ env:
 phases:
   install:
     runtime-versions:
-      python: 3.13
+      python: 3.12
     commands:
       - echo "Installing Ansible..."
       - pip install ansible
