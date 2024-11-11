@@ -5,8 +5,8 @@ env:
     ANSIBLE_HOST_KEY_CHECKING: "False"
   parameter-store:
     SSH_KEY: "/myproject/ansible-ssh-key"
-    AWS_ACCESS_KEY_ID: "/myproject/aws-access-key-id"  
-    AWS_SECRET_ACCESS_KEY: "/myproject/aws-secret-access-key"  
+    AWS_ACCESS_KEY_ID: "/myproject/aws-access-key-id"
+    AWS_SECRET_ACCESS_KEY: "/myproject/aws-secret-access-key"
 
 phases:
   install:
@@ -24,10 +24,11 @@ phases:
       - mkdir -p ~/.ssh
       - echo "$SSH_KEY" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
+      - echo "SSH key is written to ~/.ssh/id_rsa"
       - echo "Configuring AWS CLI..."
       - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
       - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-      - aws configure set default.region us-west-2  
+      - aws configure set default.region us-west-2
 
   build:
     commands:
@@ -38,7 +39,7 @@ phases:
   post_build:
     commands:
       - echo "Cleaning up..."
-      - rm -f ~/.ssh/id_rsa  
+      - rm -f ~/.ssh/id_rsa
       - echo "Pipeline completed successfully!"
 
 artifacts:
