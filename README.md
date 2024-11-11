@@ -1,7 +1,7 @@
 ﻿# AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT
 
  #stack created named as nginx in AWS and also EC2 instances created
-  ![image](https://github.com/user-attachments/assets/8c7fad9a-4c88-4c42-9e7f-c374c448cd74)
+![image](https://github.com/user-attachments/assets/68e0f94a-7cb1-4ce2-8402-8f487f5c6fc0)
 
 
 #created Organisation and workspace in terraform cloud for terraform configuration
