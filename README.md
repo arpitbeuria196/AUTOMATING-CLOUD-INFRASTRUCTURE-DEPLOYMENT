@@ -1,5 +1,9 @@
 ﻿# AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT
 
+#Created Build Project in AWS and configured with GitHub
+ ![image](https://github.com/user-attachments/assets/a430398e-c092-412b-a4f9-17dad70d4c1a)
+
+
  #stack created named as nginx in AWS and also EC2 instances created
 ![image](https://github.com/user-attachments/assets/68e0f94a-7cb1-4ce2-8402-8f487f5c6fc0)
 
