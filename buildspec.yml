@@ -24,9 +24,7 @@ phases:
   build:
     commands:
       - echo "Running Ansible playbook..."
-      - ansible-galaxy collection install amazon.aws
-      - ansible-inventory -i aws_ec2.yaml --list
-      - ansible-playbook -i aws_ec2.yaml configure_server.yml
+      - ansible-playbook -i inventory.ini configure_server.yml
       - echo "Playbook execution completed"
 
   post_build:
