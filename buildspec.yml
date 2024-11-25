@@ -4,7 +4,7 @@ env:
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
   parameter-store:
-    SSH_KEY: "/myproject/ansible-ssh-key"  # Path in Systems Manager Parameter Store
+    SSH_KEY: "/myproject/ansible-ssh-key"
     AWS_ACCESS_KEY_ID: "/myproject/aws-access-key-id"
     AWS_SECRET_ACCESS_KEY: "/myproject/aws-secret-access-key"
 
@@ -22,7 +22,7 @@ phases:
     commands:
       - echo "Preparing SSH key..."
       - mkdir -p ~/.ssh
-      - echo "$SSH_KEY" > ~/.ssh/id_rsa 
+      - echo "$SSH_KEY" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
       - echo "SSH key is written to ~/.ssh/id_rsa"
       - echo "Configuring AWS CLI..."
@@ -39,7 +39,7 @@ phases:
   post_build:
     commands:
       - echo "Cleaning up..."
-      - rm -f ~/.ssh/id_rsa 
+      - rm -f ~/.ssh/id_rsa
       - echo "Pipeline completed successfully!"
 
 artifacts:
