@@ -33,7 +33,7 @@ phases:
   build:
     commands:
       - echo "Running Ansible playbook to configure EC2 instance..."
-      - export ANSIBLE_PRIVATE_KEY_FILE=~/.ssh/id_rsa
+      - export ANSIBLE_PRIVATE_KEY_FILE=~/.ssh/id_rsa  # Explicitly define key file location
       - ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory.ini nginx-setup.yml
       - echo "Playbook execution completed"
 
