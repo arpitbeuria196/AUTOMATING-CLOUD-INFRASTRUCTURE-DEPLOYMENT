@@ -5,18 +5,13 @@ env:
     ANSIBLE_HOST_KEY_CHECKING: "False"
   parameter-store:
     SSH_KEY: "/myproject/ansible-ssh-key"
-    AWS_ACCESS_KEY_ID: "/myproject/aws-access-key-id"
-    AWS_SECRET_ACCESS_KEY: "/myproject/aws-secret-access-key"
 
 phases:
   install:
     runtime-versions:
-      python: 3.12
+      python: 3.13
     commands:
-      - echo "Installing Ansible..."
       - pip install ansible
-      - echo "Installing AWS CLI..."
-      - pip install awscli
 
   pre_build:
     commands:
@@ -24,27 +19,19 @@ phases:
       - mkdir -p ~/.ssh
       - echo "$SSH_KEY" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
-      - echo "SSH key is written to ~/.ssh/id_rsa"
-      - echo "Configuring AWS CLI..."
-      - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-      - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-      - aws configure set default.region us-west-2
-
+      - eval "$(ssh-agent -s)"
+      - ssh-add ~/.ssh/id_rsa
   build:
     commands:
-      - echo "Running Ansible playbook to configure EC2 instance..."
-      - export ANSIBLE_PRIVATE_KEY_FILE=~/.ssh/id_rsa
-      - ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory.ini nginx-setup.yml
-      - echo "Creating MyGitHubRepoArtifact..."
-      - echo "This is the GitHub Repo Artifact" > MyGitHubRepoArtifact  # This creates the artifact
+      - echo "Running Ansible playbook..."
+      - ansible-playbook -i inventory.ini configure_server.yml
       - echo "Playbook execution completed"
 
   post_build:
     commands:
       - echo "Cleaning up..."
       - rm -f ~/.ssh/id_rsa
-      - echo "Pipeline completed successfully!"
 
 artifacts:
   files:
-    - MyGitHubRepoArtifact  # Ensures this file is included in the build artifact
+    - '**/*'
