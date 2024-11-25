@@ -34,7 +34,7 @@ phases:
     commands:
       - echo "Running Ansible playbook to configure EC2 instance..."
       - export ANSIBLE_PRIVATE_KEY_FILE=~/.ssh/id_rsa
-      - ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory.ini nginx-setup.yml
+      - ansible-playbook -i inventory.ini nginx-setup.yml
       - echo "Playbook execution completed"
 
   post_build:
