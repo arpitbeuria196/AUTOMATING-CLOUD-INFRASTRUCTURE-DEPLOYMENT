@@ -3,48 +3,27 @@
   hosts: webservers
   become: yes
   tasks:
-
-    # Step 1: Ensure .ssh directory exists for ansible user
     - name: Ensure .ssh directory exists
       file:
         path: "/home/ansible/.ssh"
         state: directory
         mode: '0700'
-      become: yes
-      become_user: ansible
+      become: true
+      become_user: ansible  # Adjust as needed
 
-    # Step 2: Retrieve SSH Private Key from SSM Parameter Store
-    - name: Retrieve SSH Private Key from SSM Parameter Store
-      shell: |
-        aws ssm get-parameter --name "/myproject/ansible-ssh-key" --with-decryption --query "Parameter.Value" --output text > /home/ansible/.ssh/id_rsa
-        chmod 600 /home/ansible/.ssh/id_rsa
-      become: yes
-      become_user: ansible
-
-    # Step 3: Install Nginx
     - name: Install Nginx
       yum:
         name: nginx
         state: present
 
-    # Step 4: Start Nginx service
     - name: Start Nginx service
       service:
         name: nginx
         state: started
         enabled: yes
 
-    # Step 5: Copy custom index.html to Nginx web server
     - name: Copy index.html to Nginx
       copy:
-        src: /mnt/c/Users/arpit/OneDrive/Documents/GitHub/AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT/index.html
+        src: /mnt/c/Users/arpit/OneDrive/Documents/GitHub/AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT/index.html  
         dest: /usr/share/nginx/html/index.html
-        mode: '0644'
-
-    # Step 6: Ensure correct permissions for the index.html file
-    - name: Ensure correct permissions for the index.html file
-      file:
-        path: /usr/share/nginx/html/index.html
-        owner: nginx
-        group: nginx
         mode: '0644'
