@@ -8,7 +8,7 @@ Resources:
       InstanceType: t2.micro
       SecurityGroups:
         - !Ref MySecurityGroup
-      KeyName: ansible_key 
+      KeyName: !Ref MyKeyPair 
       ImageId: ami-066a7fbea5161f451  
 
   MySecurityGroup:
@@ -32,4 +32,4 @@ Resources:
   MyKeyPair:
     Type: AWS::EC2::KeyPair
     Properties:
-      KeyName: "ansible" 
+      KeyName: ansiblekey 
