@@ -31,8 +31,8 @@
         state: started
         enabled: yes
 
-    - name: Copy index.html to Nginx
-      copy:
-        src: https://github.com/arpitbeuria196/AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT/blob/main/index.html
+ - name: Download index.html from GitHub
+      get_url:
+        url: "https://raw.githubusercontent.com/arpitbeuria196/AUTOMATING-CLOUD-INFRASTRUCTURE-DEPLOYMENT/main/index.html"
         dest: /usr/share/nginx/html/index.html
         mode: '0644'
