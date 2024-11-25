@@ -22,6 +22,7 @@ phases:
     commands:
       - echo "Preparing SSH key..."
       - mkdir -p ~/.ssh
+      # Retrieve SSH key from AWS Systems Manager Parameter Store
       - echo "$SSH_KEY" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
       - echo "SSH key is written to ~/.ssh/id_rsa"
@@ -34,7 +35,7 @@ phases:
     commands:
       - echo "Running Ansible playbook to configure EC2 instance..."
       - export ANSIBLE_PRIVATE_KEY_FILE=~/.ssh/id_rsa
-      - ansible-playbook -i inventory.ini nginx-setup.yml
+      - ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory.ini nginx-setup.yml
       - echo "Playbook execution completed"
 
   post_build:
