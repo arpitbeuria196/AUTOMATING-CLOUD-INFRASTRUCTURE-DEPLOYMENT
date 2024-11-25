@@ -1,8 +1,4 @@
 ---
-plugin: amazon.aws.aws_ec2
-regions:
-  - us-west-2
----
 - name: Configure EC2 instance and deploy Docker application
   hosts: all
   become: yes
